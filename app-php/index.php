@@ -1,4 +1,5 @@
 <?php
+
 // Health check endpoint
 if ($_SERVER['REQUEST_URI'] === '/health') {
     http_response_code(200);
