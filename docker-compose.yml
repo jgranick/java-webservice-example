@@ -1,31 +1,36 @@
 services:
   app-java:
-    build:
-      context: ./app-java
-      dockerfile: Dockerfile
+    build: ./app-java
     container_name: java_app
+    expose:
+      - "8080"
     env_file:
       - .env
     depends_on:
       - mysql
-    ports:
-      - "8080:8080"
   
   app-go:
-    build:
-      context: ./app-go
-      dockerfile: Dockerfile
+    build: ./app-go
+    expose:
+      - "8080"
     env_file:
       - .env
-    ports:
-      - "8081:8080"
+    depends_on:
+      - mysql
+  
+  app-node:
+    build: ./app-node
+    expose:
+      - "8080"
+    env_file:
+      - .env
     depends_on:
       - mysql
   
   app-php-fpm:
     build: ./app-php
     expose:
-      - "9000"  # Expose PHP-FPM to Nginx
+      - "9000"
     env_file:
       - .env
     depends_on:
@@ -36,10 +41,19 @@ services:
     volumes:
       - ./app-php/nginx.conf:/etc/nginx/conf.d/default.conf
       # - ./app-php/html:/var/www/html
-    ports:
-      - "8082:8080"
+    expose:
+      - "8080"
     depends_on:
       - app-php-fpm
+  
+  app-py:
+    build: ./app-py
+    expose:
+      - "8080"
+    env_file:
+      - .env
+    depends_on:
+      - mysql
 
   nginx:
     image: nginx:latest
@@ -51,7 +65,9 @@ services:
     depends_on:
       - app-java
       - app-go
+      - app-node
       - app-php
+      - app-py
   
   mysql:
     image: mysql:8.0
@@ -61,8 +77,8 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
-    ports:
-      - "3306:3306"
+    expose:
+      - "3306"
     volumes:
       - mysql_data:/var/lib/mysql
 
