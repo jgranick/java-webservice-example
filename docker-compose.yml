@@ -54,6 +54,15 @@ services:
       - .env
     depends_on:
       - mysql
+  
+  app-ruby:
+    build: ./app-ruby
+    expose:
+      - "8080"
+    env_file:
+      - .env
+    depends_on:
+      - mysql
 
   nginx:
     image: nginx:latest
@@ -68,6 +77,7 @@ services:
       - app-node
       - app-php
       - app-py
+      - app-ruby
   
   mysql:
     image: mysql:8.0

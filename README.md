@@ -1,1 +1,1 @@
-# java-webservice-example
+# webservice-example
