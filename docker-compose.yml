@@ -1,7 +1,6 @@
 services:
-  app-java:
-    build: ./app-java
-    container_name: java_app
+  app-cs:
+    build: ./app-cs
     expose:
       - "8080"
     env_file:
@@ -18,8 +17,17 @@ services:
     depends_on:
       - mysql
   
-  app-node:
-    build: ./app-node
+  app-java:
+    build: ./app-java
+    expose:
+      - "8080"
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+  
+  app-js:
+    build: ./app-js
     expose:
       - "8080"
     env_file:
@@ -55,8 +63,8 @@ services:
     depends_on:
       - mysql
   
-  app-ruby:
-    build: ./app-ruby
+  app-rb:
+    build: ./app-rb
     expose:
       - "8080"
     env_file:
@@ -72,12 +80,13 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - app-java
+      - app-cs
       - app-go
-      - app-node
+      - app-java
+      - app-js
       - app-php
       - app-py
-      - app-ruby
+      - app-rb
   
   mysql:
     image: mysql:8.0
