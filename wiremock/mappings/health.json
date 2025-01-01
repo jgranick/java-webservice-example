@@ -1,0 +1,19 @@
+{
+    "request": {
+      "method": "GET",
+      "url": "/health",
+      "headers": {
+        "Host": {
+          "equalTo": "localhost",
+          "caseInsensitive": true
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "body": "{\"host\": \"from-2\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }

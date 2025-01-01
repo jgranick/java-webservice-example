@@ -1,0 +1,254 @@
+{
+    "info": {
+        "name": "WebService Tests",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "health",
+            "item": [
+                {
+                "name": "C#",
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                    "raw": "nginx/health",
+                    "host": ["nginx"],
+                    "path": ["health"]
+                    }
+                },
+                "event": [
+                    {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                        "pm.test(\"Status code is 200\", function () {",
+                        "    pm.response.to.have.status(200);",
+                        "});",
+                        "pm.test(\"Response contains expected properties\", function () {",
+                        "    pm.expect(pm.response.text()).to.eql('C# App is running!');",
+                        "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                    }
+                ],
+                "response": []
+                },
+                {
+                "name": "Go",
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                    "raw": "nginx/health",
+                    "host": ["nginx"],
+                    "path": ["health"]
+                    }
+                },
+                "event": [
+                    {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                        "pm.test(\"Status code is 200\", function () {",
+                        "    pm.response.to.have.status(200);",
+                        "});",
+                        "pm.test(\"Response contains expected properties\", function () {",
+                        "    pm.expect(pm.response.text()).to.eql('Go App is running!');",
+                        "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                    }
+                ],
+                "response": []
+                },
+                {
+                "name": "Java",
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                    "raw": "nginx/health",
+                    "host": ["nginx"],
+                    "path": ["health"]
+                    }
+                },
+                "event": [
+                    {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                        "pm.test(\"Status code is 200\", function () {",
+                        "    pm.response.to.have.status(200);",
+                        "});",
+                        "pm.test(\"Response contains expected properties\", function () {",
+                        "    pm.expect(pm.response.text()).to.eql('Java App is running!');",
+                        "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                    }
+                ],
+                "response": []
+                },
+                {
+                "name": "JavaScript",
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                    "raw": "nginx/health",
+                    "host": ["nginx"],
+                    "path": ["health"]
+                    }
+                },
+                "event": [
+                    {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                        "pm.test(\"Status code is 200\", function () {",
+                        "    pm.response.to.have.status(200);",
+                        "});",
+                        "pm.test(\"Response contains expected properties\", function () {",
+                        "    pm.expect(pm.response.text()).to.eql('Node.js App is running!');",
+                        "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                    }
+                ],
+                "response": []
+                },
+                {
+                "name": "PHP",
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                    "raw": "nginx/health",
+                    "host": ["nginx"],
+                    "path": ["health"]
+                    }
+                },
+                "event": [
+                    {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                        "pm.test(\"Status code is 200\", function () {",
+                        "    pm.response.to.have.status(200);",
+                        "});",
+                        "pm.test(\"Response contains expected properties\", function () {",
+                        "    pm.expect(pm.response.text()).to.eql('PHP App is running!');",
+                        "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                    }
+                ],
+                "response": []
+                },
+                {
+                "name": "Python",
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                    "raw": "nginx/health",
+                    "host": ["nginx"],
+                    "path": ["health"]
+                    }
+                },
+                "event": [
+                    {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                        "pm.test(\"Status code is 200\", function () {",
+                        "    pm.response.to.have.status(200);",
+                        "});",
+                        "pm.test(\"Response contains expected properties\", function () {",
+                        "    pm.expect(pm.response.text()).to.eql('Python App is running!');",
+                        "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                    }
+                ],
+                "response": []
+                },
+                {
+                "name": "Ruby",
+                "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                    "raw": "nginx/health",
+                    "host": ["nginx"],
+                    "path": ["health"]
+                    }
+                },
+                "event": [
+                    {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                        "pm.test(\"Status code is 200\", function () {",
+                        "    pm.response.to.have.status(200);",
+                        "});",
+                        "pm.test(\"Response contains expected properties\", function () {",
+                        "    pm.expect(pm.response.text()).to.eql('Ruby App is running!');",
+                        "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                    }
+                ],
+                "response": []
+                }
+            ]
+        },
+        {
+            "name": "db-test",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"request backend service 2\", function () {",
+                            "    pm.response.to.have.status(200);",
+                            "",
+                            "});",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://nginx/db-test/",
+                    "protocol": "http",
+                    "host": [
+                        "nginx"
+                    ],
+                    "path": [
+                        "db-test",
+                        ""
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}
+
+
+
+

@@ -1,0 +1,19 @@
+{
+    "request": {
+      "method": "GET",
+      "url": "/db-test",
+      "headers": {
+        "Host": {
+          "equalTo": "app",
+          "caseInsensitive": true
+        }
+      }
+    },
+    "response": {
+      "status": 200,
+      "body": "{\"host\": \"from-1\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  }
