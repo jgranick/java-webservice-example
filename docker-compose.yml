@@ -100,26 +100,6 @@ services:
       - "3306"
     volumes:
       - mysql_data:/var/lib/mysql
-  
-  wiremock:
-    image: wiremock/wiremock:2.32.0
-    command: [ "--port", "80", "--verbose" ]
-    ports:
-      - "8080:80"
-    volumes:
-      - ./wiremock:/home/wiremock
-    networks:
-      default:
-        aliases:
-          - app
-  
-  newman:
-    image: postman/newman
-    volumes:
-      - ./newman:/etc/newman
-    depends_on:
-      - wiremock
-    command: [ "run", "webservice.postman_collection.json" ]
 
 volumes:
   mysql_data:

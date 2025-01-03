@@ -1,0 +1,23 @@
+include:
+  - ./docker-compose.yml
+
+services:
+  wiremock:
+    image: wiremock/wiremock:2.32.0
+    command: [ "--port", "80", "--verbose" ]
+    ports:
+      - "8080:80"
+    volumes:
+      - ./wiremock:/home/wiremock
+    networks:
+      default:
+        aliases:
+          - app
+  
+  newman:
+    image: postman/newman
+    volumes:
+      - ./newman:/etc/newman
+    command: [ "run", "webservice.postman_collection.json" ]
+    depends_on:
+      - wiremock

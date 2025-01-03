@@ -1,0 +1,46 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Docker
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    # Step 3: Log in to Docker Hub (optional, if pulling private images)
+    # - name: Log in to Docker Hub
+    #   uses: docker/login-action@v2
+    #   with:
+    #     username: ${{ secrets.DOCKER_USERNAME }}
+    #     password: ${{ secrets.DOCKER_PASSWORD }}
+
+    # Step 4: Build and run services using Docker Compose
+    - name: Build and Run Docker Compose Services
+      run: |
+        docker compose --file docker-compose.test.yml up --build -d
+        docker compose ps
+
+    # Step 5: Run tests
+    # - name: Run Tests
+    #   run: |
+    #     docker compose exec <test-service-name> <test-command>
+        
+    # Step 6: Shut down services
+    - name: Tear Down Docker Compose
+      if: always()
+      run: |
+        docker compose down
